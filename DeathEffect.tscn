@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://n1jcamqwrtn7"]
+
+[node name="DeathEffect" type="CPUParticles2D"]
+z_index = 5
+amount = 50
+lifetime = 10.0
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.38
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(100, 20)
+spread = 180.0
+gravity = Vector2(0, 0.1)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+damping_min = 31.313
+damping_max = 48.485
+angle_min = -29.1
+angle_max = 58.2
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+color = Color(0.780392, 0, 0, 1)

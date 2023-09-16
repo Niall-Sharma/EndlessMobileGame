@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://buo7h310u16wt"]
+
+[ext_resource type="Script" path="res://Master/Line2D.gd" id="1_754ow"]
+[ext_resource type="Script" path="res://Master/Player.gd" id="1_trl56"]
+[ext_resource type="Script" path="res://Master/Master.gd" id="1_uxsq4"]
+[ext_resource type="PackedScene" uid="uid://cjxc77l224go5" path="res://Point/point.tscn" id="3_wfb8c"]
+[ext_resource type="Texture2D" uid="uid://2r5r1k0f3het" path="res://Master/PlayerSprite.png" id="4_q2y4m"]
+[ext_resource type="PackedScene" uid="uid://boymk5y6fskf5" path="res://camera_2d.tscn" id="4_t2xlv"]
+[ext_resource type="AudioStream" uid="uid://dnx6cmduetb84" path="res://Master/pickupCoin.wav" id="5_gkve4"]
+[ext_resource type="AudioStream" uid="uid://bsc75yj6ittjy" path="res://Master/explosion.wav" id="6_3k8e5"]
+[ext_resource type="AudioStream" uid="uid://xhevg8ti7m0d" path="res://Master/congrats.wav" id="9_a77b3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80bng"]
+
+[node name="Master" type="Node2D"]
+script = ExtResource("1_uxsq4")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
+script = ExtResource("1_754ow")
+
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2(0, -104)
+mass = 10.0
+gravity_scale = 6.0
+lock_rotation = true
+script = ExtResource("1_trl56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_80bng")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(4.76837e-07, 7.39098e-06)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_q2y4m")
+
+[node name="Camera2D" parent="Player" instance=ExtResource("4_t2xlv")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScoreText" type="Label" parent="CanvasLayer"]
+z_as_relative = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="TimerBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Point" parent="." instance=ExtResource("3_wfb8c")]
+visible = false
+
+[node name="deathTime" type="Timer" parent="."]
+autostart = true
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gkve4")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3k8e5")
+
+[node name="CongratsSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_a77b3")
+
+[connection signal="timeout" from="deathTime" to="." method="_on_death_time_timeout"]
