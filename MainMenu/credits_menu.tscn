@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://cre1jkb4vubvm"]
+
+[ext_resource type="Script" path="res://MainMenu/credits_menu.gd" id="1_fj4on"]
+[ext_resource type="Theme" uid="uid://bu1pjwr5kc5bw" path="res://MainMenu/main_menu.tres" id="1_j1irq"]
+
+[node name="CreditsMenu" type="VBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 65
+script = ExtResource("1_fj4on")
+
+[node name="CreditLabel" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_j1irq")
+theme_override_font_sizes/font_size = 120
+text = "CREDITS"
+horizontal_alignment = 1
+
+[node name="Credits" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 2
+theme = ExtResource("1_j1irq")
+theme_override_font_sizes/font_size = 30
+text = "Menu - Space Chillout: by PenguinMusic"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="Credits"]
+layout_mode = 2
+theme = ExtResource("1_j1irq")
+theme_override_font_sizes/font_size = 30
+text = "Planets created by Deep-fold"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label3" type="Label" parent="Credits"]
+layout_mode = 2
+theme = ExtResource("1_j1irq")
+theme_override_font_sizes/font_size = 30
+text = "Game created in Godot game engine"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label4" type="Label" parent="Credits"]
+layout_mode = 2
+theme = ExtResource("1_j1irq")
+theme_override_font_sizes/font_size = 30
+text = "game music created in bosca ceoil"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_j1irq")
+text = "BACK"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

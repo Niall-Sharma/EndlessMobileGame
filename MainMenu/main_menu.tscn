@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bncy5itafkr2s"]
+[gd_scene load_steps=13 format=3 uid="uid://bncy5itafkr2s"]
 
 [ext_resource type="Script" path="res://MainMenu/main_menu.gd" id="1_aw8ux"]
 [ext_resource type="Theme" uid="uid://bu1pjwr5kc5bw" path="res://MainMenu/main_menu.tres" id="1_vfwmx"]
+[ext_resource type="Texture2D" uid="uid://2r5r1k0f3het" path="res://Point/PlanetSprites/PlayerSprite.png" id="3_ca7le"]
+[ext_resource type="Texture2D" uid="uid://bjbpln1nvgea" path="res://Point/PlanetSprites/RandomSprite1.png" id="4_mvjgf"]
+[ext_resource type="Texture2D" uid="uid://cbd1rvgpbu0eo" path="res://Point/PlanetSprites/RandomSprite2.png" id="5_fb00b"]
+[ext_resource type="Texture2D" uid="uid://bv3wqjrsktl73" path="res://Point/PlanetSprites/RandomSprite3.png" id="6_wg4d8"]
+[ext_resource type="Texture2D" uid="uid://lvqrdg7mxrcf" path="res://Point/PlanetSprites/RandomSprite4.png" id="7_873sa"]
+[ext_resource type="Texture2D" uid="uid://dayoivkcimhye" path="res://Point/PlanetSprites/RandomSprite5.png" id="8_dibxo"]
+[ext_resource type="Texture2D" uid="uid://d3k7mwr66p7fs" path="res://Point/PlanetSprites/RandomSprite6.png" id="9_j6aqy"]
+[ext_resource type="Texture2D" uid="uid://ci6peio71tjgc" path="res://Point/PlanetSprites/RandomSprite.png" id="10_bgib4"]
+[ext_resource type="Texture2D" uid="uid://bnxua7ss7hqjh" path="res://Point/PlanetSprites/RandomSpriteDry.png" id="11_awlr5"]
+[ext_resource type="AudioStream" uid="uid://dh6ise04bfgm8" path="res://space-chillout-14194.mp3" id="12_rfm01"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,6 +21,14 @@ offset_bottom = 40.0
 script = ExtResource("1_aw8ux")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Main Menu Box" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -27,6 +45,7 @@ grow_vertical = 2
 theme_override_constants/separation = 100
 
 [node name="GameTitle" type="Label" parent="CanvasLayer/Main Menu Box"]
+z_index = 1
 layout_mode = 2
 theme = ExtResource("1_vfwmx")
 theme_override_font_sizes/font_size = 100
@@ -39,20 +58,88 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 20
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Main Menu Box/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme = ExtResource("1_vfwmx")
 text = "START"
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/Main Menu Box/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme = ExtResource("1_vfwmx")
 text = "OPTIONS"
 
+[node name="CreditButton" type="Button" parent="CanvasLayer/Main Menu Box/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+theme = ExtResource("1_vfwmx")
+text = "CREDITS"
+
 [node name="QuitButton" type="Button" parent="CanvasLayer/Main Menu Box/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme = ExtResource("1_vfwmx")
 text = "QUIT"
 
+[node name="Planets" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerSprite" type="Sprite2D" parent="CanvasLayer/Planets"]
+position = Vector2(-269, 474)
+scale = Vector2(2.52, 2.52)
+texture = ExtResource("3_ca7le")
+
+[node name="RandomSprite1" type="Sprite2D" parent="CanvasLayer/Planets"]
+position = Vector2(-267, 173)
+texture = ExtResource("4_mvjgf")
+
+[node name="RandomSprite2" type="Sprite2D" parent="CanvasLayer/Planets"]
+position = Vector2(281, 346)
+texture = ExtResource("5_fb00b")
+
+[node name="RandomSprite3" type="Sprite2D" parent="CanvasLayer/Planets"]
+position = Vector2(292, -124)
+texture = ExtResource("6_wg4d8")
+
+[node name="RandomSprite4" type="Sprite2D" parent="CanvasLayer/Planets"]
+position = Vector2(-8, 140)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("7_873sa")
+
+[node name="RandomSprite5" type="Sprite2D" parent="CanvasLayer/Planets"]
+position = Vector2(358, 125)
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("8_dibxo")
+
+[node name="RandomSprite6" type="Sprite2D" parent="CanvasLayer/Planets"]
+position = Vector2(-235, -94)
+texture = ExtResource("9_j6aqy")
+
+[node name="RandomSprite" type="Sprite2D" parent="CanvasLayer/Planets"]
+position = Vector2(228, -344)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("10_bgib4")
+
+[node name="RandomSpriteDry" type="Sprite2D" parent="CanvasLayer/Planets"]
+position = Vector2(-307, -425)
+scale = Vector2(1.18, 1.18)
+texture = ExtResource("11_awlr5")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_rfm01")
+
 [connection signal="pressed" from="CanvasLayer/Main Menu Box/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main Menu Box/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Menu Box/VBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main Menu Box/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
