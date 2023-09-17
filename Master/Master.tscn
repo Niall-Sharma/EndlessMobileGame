@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://buo7h310u16wt"]
+[gd_scene load_steps=14 format=3 uid="uid://buo7h310u16wt"]
 
 [ext_resource type="Script" path="res://Master/Line2D.gd" id="1_754ow"]
 [ext_resource type="Script" path="res://Master/Player.gd" id="1_trl56"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://2r5r1k0f3het" path="res://Point/PlanetSprites/PlayerSprite.png" id="4_wvjj0"]
 [ext_resource type="AudioStream" uid="uid://dnx6cmduetb84" path="res://Master/pickupCoin.wav" id="5_gkve4"]
 [ext_resource type="AudioStream" uid="uid://bsc75yj6ittjy" path="res://Master/explosion.wav" id="6_3k8e5"]
+[ext_resource type="Theme" uid="uid://bu1pjwr5kc5bw" path="res://MainMenu/main_menu.tres" id="6_k78g4"]
 [ext_resource type="AudioStream" uid="uid://xhevg8ti7m0d" path="res://Master/congrats.wav" id="9_a77b3"]
 [ext_resource type="AudioStream" uid="uid://xwl6a4oj0x1q" path="res://Work.wav" id="10_kivdt"]
 
@@ -78,6 +79,7 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 26.0
 grow_horizontal = 2
+theme = ExtResource("6_k78g4")
 theme_override_font_sizes/font_size = 100
 text = "0
 "

@@ -24,18 +24,19 @@ offset_right = 302.5
 offset_bottom = 312.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 100
 
 [node name="GameTitle" type="Label" parent="CanvasLayer/Main Menu Box"]
 layout_mode = 2
 theme = ExtResource("1_vfwmx")
 theme_override_font_sizes/font_size = 100
-text = "GAME NAME"
+text = "SPACESHOT"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main Menu Box"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 75
+theme_override_constants/separation = 20
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Main Menu Box/VBoxContainer"]
 layout_mode = 2

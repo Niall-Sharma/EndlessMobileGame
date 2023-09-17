@@ -39,7 +39,6 @@ func _givePoint():
 func _createPoint():
 	var point = pointScene.instantiate()
 	add_child(point)
-	print(get_viewport_rect().size.x/2)
 	pointPos.x = randf_range(-(get_viewport_rect().size.x/6), (get_viewport_rect().size.x/6))
 	point.position = pointPos
 	point.connect("givePoint", _givePoint)
