@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://bncy5itafkr2s"]
+
+[ext_resource type="Script" path="res://MainMenu/main_menu.gd" id="1_aw8ux"]
+[ext_resource type="Theme" uid="uid://bu1pjwr5kc5bw" path="res://MainMenu/main_menu.tres" id="1_vfwmx"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_aw8ux")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Main Menu Box" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -302.5
+offset_top = -312.0
+offset_right = 302.5
+offset_bottom = 312.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTitle" type="Label" parent="CanvasLayer/Main Menu Box"]
+layout_mode = 2
+theme = ExtResource("1_vfwmx")
+theme_override_font_sizes/font_size = 100
+text = "GAME NAME"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main Menu Box"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 75
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Main Menu Box/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_vfwmx")
+text = "START"
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Main Menu Box/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_vfwmx")
+text = "OPTIONS"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Main Menu Box/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_vfwmx")
+text = "QUIT"
+
+[connection signal="pressed" from="CanvasLayer/Main Menu Box/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Menu Box/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Menu Box/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

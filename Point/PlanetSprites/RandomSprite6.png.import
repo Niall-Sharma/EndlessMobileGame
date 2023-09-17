@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dayoivkcimhye"
-path="res://.godot/imported/RandomSprite5.png-173d0f7c3a98c43909bcb20f868984e5.ctex"
+uid="uid://d3k7mwr66p7fs"
+path="res://.godot/imported/RandomSprite6.png-69a984e3caacee39e781f20f449e3e2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Master/RandomSprite5.png"
-dest_files=["res://.godot/imported/RandomSprite5.png-173d0f7c3a98c43909bcb20f868984e5.ctex"]
+source_file="res://Point/PlanetSprites/RandomSprite6.png"
+dest_files=["res://.godot/imported/RandomSprite6.png-69a984e3caacee39e781f20f449e3e2e.ctex"]
 
 [params]
 

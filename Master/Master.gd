@@ -20,13 +20,14 @@ var cam = preload("res://camera_2d.tscn")
 func _ready():
 	$deathTime.start(deathTimeLeft)
 	call_deferred("_createPoint")
-
+	$MainTheme.play()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	$CanvasLayer/TimerBar.value = $deathTime.time_left
 
 func _givePoint():
 	score+=1
+	call_deferred("_createPoint")
 	call_deferred("_createPoint")
 	scoreText.text = str(score)
 	playerSling.canSling = true
@@ -51,9 +52,9 @@ func _on_death_time_timeout():
 	$deathTime.stop()
 
 func _playerDeath():
+	var deathScreen = preload("res://GameOver/death_screen.tscn")
 	var deathNode = deathEffect.instantiate()
 	add_child(deathNode)
-	
 	$Player.remove_child($Player/Camera2D)
 	var camNode = cam.instantiate()
 	add_child(camNode)
@@ -61,4 +62,8 @@ func _playerDeath():
 	deathNode.position = $Player.position
 	$DeathSound.play()
 	get_tree().queue_delete($Player)
+	get_tree().queue_delete($Line2D)
+	
+	var deathScreenNode = deathScreen.instantiate()
+	add_child(deathScreenNode)
 	

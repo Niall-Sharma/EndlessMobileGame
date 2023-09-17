@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjxc77l224go5"]
 
 [ext_resource type="Script" path="res://Point/point.gd" id="1_rg4v5"]
-[ext_resource type="Texture2D" uid="uid://ci6peio71tjgc" path="res://Master/RandomSprite.png" id="2_wsll5"]
+[ext_resource type="Texture2D" uid="uid://ci6peio71tjgc" path="res://Point/PlanetSprites/RandomSprite.png" id="2_1khh7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m0kug"]
 
@@ -14,7 +14,7 @@ script = ExtResource("1_rg4v5")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.0992142, -0.00136805)
 scale = Vector2(-0.196377, 0.197139)
-texture = ExtResource("2_wsll5")
+texture = ExtResource("2_1khh7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_m0kug")
