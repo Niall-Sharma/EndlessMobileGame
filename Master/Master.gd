@@ -17,11 +17,14 @@ var deathEffect = preload("res://DeathEffect.tscn")
 
 var cam = preload("res://camera_2d.tscn")
 
+signal _player_has_died
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$deathTime.start(deathTimeLeft)
 	call_deferred("_createPoint")
 	$MainTheme.play()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	$CanvasLayer/TimerBar.value = $deathTime.time_left
@@ -45,32 +48,20 @@ func _createPoint():
 	point.connect("givePoint", _givePoint)
 	pointPos.y -= (get_viewport_rect().size.y/6)
 	
-
-
-
 func _on_death_time_timeout():
+	emit_signal("_player_has_died")
 	_playerDeath()
 	$deathTime.stop()
 
 func _playerDeath():
-	var deathScreen = preload("res://GameOver/death_screen.tscn")
-	var deathNode = deathEffect.instantiate()
-	add_child(deathNode)
-	
-	$Player.remove_child($Player/Camera2D)
-	var camNode = cam.instantiate()
-	add_child(camNode)
-	
-	camNode.position = $Player.position
-	deathNode.position = $Player.position
-	
+
 	$DeathSound.play()
 	
-	get_tree().queue_delete($Player)
 	get_tree().queue_delete($Line2D)
 	
 	_save_highscore()
-	
+
+	var deathScreen = preload("res://GameOver/death_screen.tscn")
 	var deathScreenNode = deathScreen.instantiate()
 	add_child(deathScreenNode)
 	

@@ -2,13 +2,17 @@ extends RigidBody2D
 
 var dir = Vector2.ZERO
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
+func _ready():
+	get_parent().connect("_player_has_died", _die)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	linear_velocity = dir
 	dir = lerp(dir, Vector2.ZERO, 0.03)
-	#look_at(get_global_mouse_position())
+
+func _die():
+	get_child(2).reparent(get_parent())
+	var deathEffect = preload("res://DeathEffect.tscn")
+	get_parent().add_child(deathEffect.instantiate())
+	get_tree().queue_delete(self)
