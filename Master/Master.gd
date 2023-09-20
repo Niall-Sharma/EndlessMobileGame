@@ -6,6 +6,7 @@ var pointScene = preload("res://Point/point.tscn")
 @onready var playerSling = $Line2D
 
 var score = 0
+
 var rng = RandomNumberGenerator.new()
 
 var deathTimeLeft = 1
@@ -55,15 +56,28 @@ func _playerDeath():
 	var deathScreen = preload("res://GameOver/death_screen.tscn")
 	var deathNode = deathEffect.instantiate()
 	add_child(deathNode)
+	
 	$Player.remove_child($Player/Camera2D)
 	var camNode = cam.instantiate()
 	add_child(camNode)
+	
 	camNode.position = $Player.position
 	deathNode.position = $Player.position
+	
 	$DeathSound.play()
+	
 	get_tree().queue_delete($Player)
 	get_tree().queue_delete($Line2D)
+	
+	_save_highscore()
 	
 	var deathScreenNode = deathScreen.instantiate()
 	add_child(deathScreenNode)
 	
+func _save_highscore():
+	var savedScore = int(Highscore.load_score())
+	if score>savedScore:
+		Highscore.save_data(score)
+	else:
+		pass
+

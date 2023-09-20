@@ -1,10 +1,10 @@
 extends Control
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$BackgroundMusic.play()
-
+	$"CanvasLayer/Main Menu Box/Highscore".text = "Highscore: " + str(Highscore.load_score()) 
+	
 func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://Master/Master.tscn")
 

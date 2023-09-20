@@ -18,13 +18,6 @@ func _ready():
 	var rand = randf_range(0, sprites.size())
 	$Sprite2D.set_texture(sprites[rand])
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
-
 func _on_collision_area_body_entered(body):
 	if body.name == "Player":
 		emit_signal("givePoint")
