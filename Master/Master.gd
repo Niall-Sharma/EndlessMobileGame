@@ -13,15 +13,14 @@ var deathTimeLeft = 1
 
 var pointPos = Vector2.ZERO
 
-var deathEffect = preload("res://DeathEffect.tscn")
-
-var cam = preload("res://camera_2d.tscn")
-
 signal _player_has_died
+
+var points = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$deathTime.start(deathTimeLeft)
+	call_deferred("_createPoint")
 	call_deferred("_createPoint")
 	$MainTheme.play()
 	
@@ -31,8 +30,7 @@ func _process(_delta):
 
 func _givePoint():
 	score+=1
-	call_deferred("_createPoint")
-	call_deferred("_createPoint")
+	call_deferred("_createPoint")	
 	scoreText.text = str(score)
 	playerSling.canSling = true
 	$deathTime.start(deathTimeLeft)
@@ -47,6 +45,7 @@ func _createPoint():
 	point.position = pointPos
 	point.connect("givePoint", _givePoint)
 	pointPos.y -= (get_viewport_rect().size.y/6)
+	points.append(point)
 	
 func _on_death_time_timeout():
 	emit_signal("_player_has_died")
