@@ -15,7 +15,7 @@ var pointPos = Vector2.ZERO
 
 signal _player_has_died
 
-var points = []
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,7 +45,7 @@ func _createPoint():
 	point.position = pointPos
 	point.connect("givePoint", _givePoint)
 	pointPos.y -= (get_viewport_rect().size.y/6)
-	points.append(point)
+
 	
 func _on_death_time_timeout():
 	emit_signal("_player_has_died")
