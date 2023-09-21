@@ -7,4 +7,6 @@ func _on_back_pressed():
 
 
 func _on_data_wipe_button_pressed():
+	$DataWipeButton.text = "DATA WIPED"
+	$DataWipeButton.disabled = true
 	Highscore.destroy_data()
